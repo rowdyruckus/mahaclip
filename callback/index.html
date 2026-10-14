@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MahaClip · Connecting TikTok</title><link rel="stylesheet" href="../style.css"></head><body><main>
+<h1>Connecting TikTok…</h1>
+<p class="mut" id="msg">Handing the sign-in back to MahaClip.</p>
+<script>
+// TikTok only allows HTTPS redirect URLs, so it lands here; the one-time code goes on to the
+// MahaClip server, which checks the state value it issued and exchanges the code for a token.
+var q = location.search;
+if (/[?&]code=/.test(q) || /[?&]error=/.test(q)) {
+  location.replace("http://107.170.1.46:8952/tiktok/callback" + q);
+} else {
+  document.getElementById("msg").textContent = "Nothing to do here — start from “Connect TikTok” in MahaClip.";
+}
+</script>
+</main></body></html>
